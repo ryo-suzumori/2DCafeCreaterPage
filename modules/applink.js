@@ -1,4 +1,4 @@
-export function getMobileOperatingSystem() {
+function getMobileOperatingSystem() {
     var userAgent = navigator.userAgent;
 
     if (userAgent.indexOf('Android') > 0) {
