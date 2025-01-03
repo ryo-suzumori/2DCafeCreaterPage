@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+
+<head>
+    <script type="module" src="./modules/applink.js"></script>
+</head>
+
+<body onload="jumpAppLink()">
+</body>
+
+<script>
+    function jumpAppLink() {
+        const os = getMobileOperatingSystem();
+        if (os == "Android") {
+            window.location.href = "https://play.google.com/store/apps/details?id=com.software2dcafe.fortdefender";
+        }
+        else if (os == "iOS") {
+            window.location.href = "https://apps.apple.com/app/id6670361185";
+        }
+        else {
+            window.location.href = "https://note.com/ryo_suzumori/n/n864abcc5b089";
+        }
+    }
+</script>
+
+</html>
