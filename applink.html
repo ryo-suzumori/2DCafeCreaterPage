@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+
+<head>
+</head>
+
+<body onload="jump()">
+</body>
+
+<script>
+    function getMobileOperatingSystem() {
+        var userAgent = navigator.userAgent;
+
+        if (userAgent.indexOf('Android') > 0) {
+            return "Android";
+        }
+
+        if (userAgent.indexOf('iPhone') > 0 || userAgent.indexOf('iPad') > 0 || userAgent.indexOf('iPod') > 0 || (userAgent.indexOf('Macintosh') > 0 && document.ontouchstart !== undefined)) {
+            return "iOS";
+        }
+
+        return "unknown";
+    }
+
+    function jump() {
+        const searchParams = new URLSearchParams(window.location.search)
+
+        // e.g. https://xxx.pages.dev??androidid=com.xxx.xxx&iosid=idXXXXXXXXXX&defaulturl=xxx.com
+        const os = getMobileOperatingSystem();
+        if (os == "Android" && searchParams.get('androidid') != null) {
+            window.location.href = "https://play.google.com/store/apps/details?id=" + searchParams.get('androidid');
+            return;
+        }
+        if (os == "iOS" && searchParams.get('iosid') != null) {
+            window.location.href = "https://apps.apple.com/app/" + searchParams.get('iosid');
+            return;
+        }
+        if (searchParams.get('defaulturl') != null) {
+            window.location.href = "https://" + searchParams.get('defaulturl');
+        }
+    }
+</script>
+
+</html>
